@@ -7,29 +7,31 @@ export const Navbar = () => {
         <a href="#">
           {" "}
           <div className="flex p-2 h-[40px] w-[40px] bg-white rounded-lg trantistion-all hover:scale-105">
-            <img src="./src/assets/logo.png" alt="Logo Shopping Store" />
+            <img src="./public/logo.png" alt="Logo Shopping Store" />
           </div>
         </a>
-        <nav className="flex items-center justify-between gap-2 w-full">
+        <nav className="flex items-center justify-between text-gray-400 gap-2 w-full">
           <ul className="flex gap-4 x ">
-            <li className="transition-all hover:scale-105 hover:text-indigo-700">
+            <li className="transition-all hover:underline hover:text-gray-200">
               <a href="#">All</a>
             </li>
-            <li className="transition-all hover:scale-105 hover:text-indigo-700">
+            <li className="transition-all hover:underline hover:text-gray-200">
               <a href="#">Shirts</a>
             </li>
-            <li className="transition-all hover:scale-105 hover:text-indigo-700">
+            <li className="transition-all hover:underline hover:text-gray-200">
               <a href="#">Shoes</a>
             </li>
-            <li className="transition-all hover:scale-105 hover:text-indigo-700">
+            <li className="transition-all hover:underline hover:text-gray-200">
               <a href="#">Stickers</a>
             </li>
-            <li className="transition-all hover:scale-105 hover:text-indigo-700">
+            <li className="transition-all hover:underline hover:text-gray-200">
               <a href="#">Others</a>
             </li>
           </ul>
           <section className="flex justify-center w-full ">
-            <a className="hover:underline" href="#">
+            <a
+              className="transition-all text-gray-400 hover:underline hover:text-gray-200"
+              href="#">
               SHOPPING STORE
             </a>
           </section>
