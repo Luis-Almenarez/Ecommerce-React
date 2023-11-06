@@ -1,4 +1,5 @@
 import { CartWidget } from "./CartWidget";
+import { NavItem } from "./NavItem";
 
 export const Navbar = () => {
   return (
@@ -12,21 +13,11 @@ export const Navbar = () => {
         </a>
         <nav className="flex items-center justify-between text-gray-400 gap-2 w-full">
           <ul className="flex gap-4 x ">
-            <li className="transition-all hover:underline hover:text-gray-200">
-              <a href="#">All</a>
-            </li>
-            <li className="transition-all hover:underline hover:text-gray-200">
-              <a href="#">Shirts</a>
-            </li>
-            <li className="transition-all hover:underline hover:text-gray-200">
-              <a href="#">Shoes</a>
-            </li>
-            <li className="transition-all hover:underline hover:text-gray-200">
-              <a href="#">Stickers</a>
-            </li>
-            <li className="transition-all hover:underline hover:text-gray-200">
-              <a href="#">Others</a>
-            </li>
+            <NavItem text="All" link="#" />
+            <NavItem text="Shirts" link="#" />
+            <NavItem text="Shoes" link="#" />
+            <NavItem text="Stickers" link="#" />
+            <NavItem text="Others" link="#" />
           </ul>
           <section className="flex justify-center w-full ">
             <a
