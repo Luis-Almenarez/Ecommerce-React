@@ -11,7 +11,7 @@ export const Navbar = () => {
       <header className="bg-zinc-900 text-white flex items-center justify-between p-4 gap-4 font-bold">
         <a href="/">
           <div className="flex p-2 h-[40px] w-[40px] bg-white rounded-lg trantistion-all duration-300 hover:scale-105">
-            <img src="./public/logo.png" alt="Logo Shopping Store" />
+            <img src="./logo.png" alt="Logo Shopping Store" />
           </div>
         </a>
         <nav className="flex items-center justify-between text-gray-400 gap-2 w-full">
