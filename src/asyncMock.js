@@ -2,7 +2,7 @@ const products = [
   {
     id: "1",
     name: "Sneakers Urbanos",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 120,
     category: "shoes",
     description: "Modernos sneakers urbanos para un estilo casual y cómodo.",
@@ -11,7 +11,7 @@ const products = [
   {
     id: "2",
     name: "Botas de Montaña",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 150,
     category: "shoes",
     description:
@@ -21,7 +21,7 @@ const products = [
   {
     id: "3",
     name: "Sandalias de Verano",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 80,
     category: "shoes",
     description:
@@ -31,7 +31,7 @@ const products = [
   {
     id: "4",
     name: "Zapatillas Deportivas",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 110,
     category: "shoes",
     description: "Zapatillas deportivas ideales para el entrenamiento diario.",
@@ -40,7 +40,7 @@ const products = [
   {
     id: "5",
     name: "Camiseta Casual",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 30,
     category: "shirt",
     description: "Camiseta cómoda y casual para el día a día.",
@@ -49,7 +49,7 @@ const products = [
   {
     id: "6",
     name: "Camisa Elegante",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 45,
     category: "shirt",
     description:
@@ -59,7 +59,7 @@ const products = [
   {
     id: "7",
     name: "Jeans Clásicos",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 60,
     category: "pants",
     description: "Jeans clásicos para un estilo versátil y atemporal.",
@@ -68,7 +68,7 @@ const products = [
   {
     id: "8",
     name: "Sudadera Deportiva",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 75,
     category: "hoodie",
     description: "Sudadera cómoda para tus sesiones de entrenamiento.",
@@ -77,7 +77,7 @@ const products = [
   {
     id: "9",
     name: "Gorra de Moda",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 25,
     category: "accessory",
     description: "Gorra de moda para complementar tu estilo urbano.",
@@ -86,7 +86,7 @@ const products = [
   {
     id: "10",
     name: "Mochila Resistente",
-    img: "https://via.placeholder.com/350x250",
+    img: "../public/example.png",
     price: 50,
     category: "accessory",
     description: "Mochila resistente y espaciosa para tus aventuras diarias.",
