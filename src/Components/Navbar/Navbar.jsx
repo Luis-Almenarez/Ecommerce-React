@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CartWidget } from "../CartWidget/CartWidget";
 import { NavItem } from "../NavItem/NavItem";
 
@@ -16,11 +17,25 @@ export const Navbar = () => {
         </a>
         <nav className="flex items-center justify-between text-gray-400 gap-2 w-full">
           <ul className="flex gap-4">
-            <NavItem text="All" action={example} />
-            <NavItem text="Shirts" action={example} />
-            <NavItem text="Shoes" action={example} />
-            <NavItem text="Stickers" action={example} />
-            <NavItem text="Others" action={example} />
+            <Link to={"/"}>
+              <NavItem text="All" />
+            </Link>
+            <Link to={"/category/shirt"}>
+              <NavItem text="Shirts" />
+            </Link>
+            <Link to={"/category/shoes"}>
+              <NavItem text="Shoes" />
+            </Link>
+
+            <Link to={"/category/pants"}>
+              <NavItem text="Pants" />
+            </Link>
+            <Link to={"/category/accessory"}>
+              <NavItem text="Accessory" />
+            </Link>
+            <Link to={"/category/hoodie"}>
+              <NavItem text="Others" />
+            </Link>
           </ul>
           <section className="flex justify-center w-full ">
             <a
