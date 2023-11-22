@@ -20,22 +20,22 @@ export const ItemCount = ({ stock, initial = 1, onAdd }) => {
   };
 
   return (
-    <div className="flex flex-col col-2 justify-content-center items-center p-4">
-      <div className="flex p-2 gap-2 justify-center items-center">
+    <div className="flex flex-col col-2 justify-content-center items-center p-2">
+      <div className="flex p-2 gap-4 justify-center items-center">
         <button
-          className="bg-black text-white py-1 px-2 rounded-xl transition-all duration-300 hover:bg-red-500 hover:text-black"
+          className="bg-green-500 text-black py-1 px-4 rounded-md transition-all duration-300 hover:bg-red-500 hover:text-white"
           onClick={handleSubtract}>
           <RemoveIcon />
         </button>
         <strong>{count}</strong>
         <button
-          className="bg-black text-white py-1 px-2 rounded-xl transition-all duration-300 hover:bg-green-500 hover:text-black"
+          className="bg-green-500 text-black py-1 px-4 rounded-md transition-all duration-300 hover:bg-green-600 hover:text-white"
           onClick={handledAdd}>
           <AddIcon />
         </button>
       </div>
       <button
-        className="w-1/2 bg-black text-white py-2 px-4 rounded-xl transition-all duration-300 hover:bg-green-500 hover:text-black"
+        className="w-1/2 bg-green-500 text-black m-2 py-2 px-4 rounded-md transition-all duration-300 hover:bg-green-500 hover:text-white"
         onClick={() => onAdd(count)}>
         Agregar al carrito
       </button>

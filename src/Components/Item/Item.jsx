@@ -2,16 +2,20 @@ import { Link } from "react-router-dom";
 
 export const Item = ({ id, name, img, description }) => {
   return (
-    <section className="m-4 p-4 bg-white rounded-lg shadow-md transition-transform transform hover:scale-105">
+    <section className="text-center m-4 p-4 bg-black rounded-lg transition-all duration-300 border border-black hover:border-green-500">
       <div className="flex justify-center relative overflow-hidden">
-        <img src={img} alt={name} className="object-contain rounded-md" />
+        <img
+          src={img}
+          alt={name}
+          className="rounded-sm object-contain transition duration-300 ease-in-out hover:scale-105"
+        />
       </div>
       <div className="mt-4">
-        <h5 className="text-xl font-bold">{name}</h5>
-        <p className="text-gray-700">{description}</p>
+        <h5 className="text-[#22c55e] text-2xl font-bold">{name}</h5>
+        <p className="text-white w-11/12">{description}</p>
         <Link to={`/item/${id}`}>
-          <button className="mt-2 bg-black text-white py-2 px-4 rounded-xl transition-all duration-300 hover:bg-green-500 hover:text-black">
-            Details
+          <button className="w-3/4 mt-2 bg-white text-black py-2 px-8 rounded-md transition-all duration-400 hover:bg-green-500 hover:text-white">
+            Detalles
           </button>
         </Link>
       </div>
