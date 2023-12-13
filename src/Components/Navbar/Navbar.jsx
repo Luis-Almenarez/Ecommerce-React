@@ -3,16 +3,12 @@ import { CartWidget } from "../CartWidget/CartWidget";
 import { NavItem } from "../NavItem/NavItem";
 
 export const Navbar = () => {
-  const example = () => {
-    console.log("Hello World");
-  };
-
   return (
     <>
       <header className="w-full bg-[#171717] text-white flex items-center justify-between p-4 gap-4 font-bold">
         <Link to={"/"}>
           <div className="flex p-2 h-[40px] w-[40px] bg-white rounded-lg trantistion-all duration-300 hover:scale-105">
-            <img src="./logo.png" alt="Logo Shopping Store" />
+            <img src="./logo.png" alt="Logo" />
           </div>
         </Link>
         <nav className="flex items-center justify-between text-gray-400 gap-2 w-full">

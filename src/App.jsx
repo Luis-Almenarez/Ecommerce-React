@@ -5,18 +5,21 @@ import {
   ItemListContainer,
   Navbar,
 } from "./Components";
+import { CartContextProvider } from "./Context/CartContext";
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
+      <CartContextProvider>
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/category/:category" element={<ItemListContainer />} />
-        <Route path="/item/:id" element={<ItemDetailContainer />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/category/:category" element={<ItemListContainer />} />
+          <Route path="/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </CartContextProvider>
     </BrowserRouter>
   );
 };

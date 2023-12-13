@@ -1,27 +1,36 @@
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { getProductById } from "../../asyncMock";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { PuffLoader } from "react-spinners";
+import { db } from "../../Config/firebaseConfig";
 
 export const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [changes, setChanges] = useState(true);
+
+  const getProductById = (id) => {
+    const productQuery = doc(db, "products", id);
+    getDoc(productQuery)
+      .then((response) => {
+        if (response.exists()) {
+          const product = {
+            id: response.id,
+            ...response.data(),
+          };
+          setItem(product);
+          setIsLoading(false);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   useEffect(() => {
     setIsLoading(true);
-
-    getProductById(id)
-      .then((resp) => {
-        setItem(resp);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-      });
-  }, [id]);
+    getProductById(id);
+  }, [id, changes]);
 
   return (
     <>
@@ -35,7 +44,9 @@ export const ItemDetailContainer = () => {
           />
         </div>
       ) : (
-        item && <ItemDetail {...item} />
+        item && (
+          <ItemDetail {...item} changes={changes} setChanges={setChanges} />
+        )
       )}
     </>
   );

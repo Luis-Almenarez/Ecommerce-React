@@ -14,7 +14,7 @@ export const Item = ({ id, name, img, description }) => {
         <h5 className="text-[#22c55e] text-2xl font-bold">{name}</h5>
         <p className="text-white w-11/12">{description}</p>
         <Link to={`/item/${id}`}>
-          <button className="w-3/4 mt-2 bg-white text-black py-2 px-8 rounded-md transition-all duration-400 hover:bg-green-500 hover:text-white">
+          <button className="w-3/4 mt-2 bg-white text-black py-2 px-8 rounded-md transition-all duration-300 hover:bg-green-500 hover:text-white">
             Detalles
           </button>
         </Link>

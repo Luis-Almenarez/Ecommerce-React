@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
 import { ItemCount } from "../ItemCount/ItemCount";
 
-export const ItemDetail = ({ name, description, img, price, stock }) => {
-  const onAdd = (items) => {
-    alert(`Se agregaron ${items} items correctamente`);
+export const ItemDetail = ({ id, name, description, img, price, stock }) => {
+  const { addItem } = useContext(CartContext);
+
+  const handleAddToCart = (count) => {
+    addItem({ id, name, price }, count);
+    alert("Se han agregado los productos al carrito");
   };
 
   return (
@@ -13,7 +18,7 @@ export const ItemDetail = ({ name, description, img, price, stock }) => {
           <img className="rounded-md" src={img} alt={name} />
           <p className=""> {description} </p>
           <p>Precio: ${price} </p>
-          <ItemCount stock={stock} onAdd={onAdd} />
+          <ItemCount stock={stock} onAdd={handleAddToCart} />
         </div>
       </div>
     </main>

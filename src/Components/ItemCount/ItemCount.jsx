@@ -7,16 +7,16 @@ export const ItemCount = ({ stock, initial = 1, onAdd }) => {
 
   const handledAdd = () => {
     if (count < stock) {
-      return setCount(count + 1);
+      setCount(count + 1);
     }
-    setCount(count);
   };
 
   const handleSubtract = () => {
-    if (count === 0) {
-      return setCount(0);
+    if (count <= 0) {
+      setCount(0);
+    } else {
+      setCount(count - 1);
     }
-    setCount(count - 1);
   };
 
   return (
@@ -29,13 +29,13 @@ export const ItemCount = ({ stock, initial = 1, onAdd }) => {
         </button>
         <strong>{count}</strong>
         <button
-          className="bg-green-500 text-black py-1 px-4 rounded-md transition-all duration-300 hover:bg-green-600 hover:text-white"
+          className="bg-green-500 text-black py-1 px-4 rounded-md transition-all duration-300 hover:bg-green-700 hover:text-white"
           onClick={handledAdd}>
           <AddIcon />
         </button>
       </div>
       <button
-        className="w-1/2 bg-green-500 text-black m-2 py-2 px-4 rounded-md transition-all duration-300 hover:bg-green-500 hover:text-white"
+        className="w-1/2 bg-green-500 text-black m-2 py-2 px-4 rounded-md transition-all duration-300 hover:bg-green-700 hover:text-white"
         onClick={() => onAdd(count)}>
         Agregar al carrito
       </button>

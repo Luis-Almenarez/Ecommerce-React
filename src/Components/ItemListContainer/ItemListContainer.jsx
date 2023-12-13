@@ -1,8 +1,9 @@
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { getProducts } from "../../asyncMock";
-import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
-import { BounceLoader } from "react-spinners";
+import { db } from "../../Config/firebaseConfig";
+import { ItemList } from "../ItemList/ItemList";
+import { Loading } from "../Loading/Loading";
 
 export const ItemListContainer = () => {
   const { category } = useParams();
@@ -10,38 +11,38 @@ export const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    getProducts()
-      .then((response) => {
-        if (category) {
-          const filterProducts = response.filter(
-            (product) => product.category === category
-          );
-          if (filterProducts.length > 0) {
-            setProducts(filterProducts);
-          } else {
-            setProducts(response);
-          }
-        } else {
-          setProducts(response);
+  const getProducts = () => {
+    const myProducts = category
+      ? query(collection(db, "products"), where("category", "==", category))
+      : query(collection(db, "products"));
+    getDocs(myProducts)
+      .then((resp) => {
+        if (resp.size === 0) {
+          console.log("No hay productos cargados en la base de datos");
         }
+        const productList = resp.docs.map((doc) => {
+          const product = {
+            id: doc.id,
+            ...doc.data(),
+          };
+
+          return product;
+        });
+        setProducts(productList);
         setIsLoading(false);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    getProducts();
   }, [category]);
 
   return (
     <>
       {isLoading ? (
-        <div className="flex justify-center items-center h-screen">
-          <BounceLoader
-            color={"#22c55e"}
-            loading={isLoading}
-            size={350}
-            speedMultiplier={1.5}
-          />
-        </div>
+        <Loading loading={isLoading} />
       ) : (
         <ItemList products={products} />
       )}

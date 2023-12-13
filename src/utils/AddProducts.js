@@ -1,3 +1,6 @@
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../Config/firebaseConfig";
+
 const products = [
   {
     name: "Sneakers Urbanos",
@@ -84,33 +87,8 @@ const products = [
   },
 ];
 
-export const getProducts = () => {
-  return new Promise((resolve, reject) => {
-    if (products.length > 0) {
-      setTimeout(() => {
-        resolve(products);
-      }, 1500);
-    } else {
-      reject("No existen productos");
-    }
-  });
-};
-
-export const getProductById = (id) => {
-  return new Promise((resolve, reject) => {
-    if (products.length > 0) {
-      const product = products.find((p) => p.id === id);
-
-      setTimeout(() => {
-        if (!product) {
-          reject(
-            `El producto con el id:${id} no se encuentra en la base de datos`
-          );
-        }
-        resolve(product);
-      }, 1500);
-    } else {
-      reject("No existen productos");
-    }
+export const AddProducts = () => {
+  products.forEach((product) => {
+    addDoc(collection(db, "products"), product);
   });
 };
