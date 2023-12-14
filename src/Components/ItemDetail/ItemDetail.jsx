@@ -6,8 +6,12 @@ export const ItemDetail = ({ id, name, description, img, price, stock }) => {
   const { addItem } = useContext(CartContext);
 
   const handleAddToCart = (count) => {
-    addItem({ id, name, price }, count);
-    alert("Se han agregado los productos al carrito");
+    if (count === 0) {
+      alert("Debe agregar por lo menos un producto al carrito");
+    } else {
+      addItem({ id, name, price }, count);
+      alert("Se han agregado los productos al carrito");
+    }
   };
 
   return (
