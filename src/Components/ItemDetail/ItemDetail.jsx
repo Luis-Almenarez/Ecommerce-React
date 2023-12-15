@@ -15,16 +15,20 @@ export const ItemDetail = ({ id, name, description, img, price, stock }) => {
   };
 
   return (
-    <main className="bg-black text-center text-white m-4 p-4 rounded-lg">
-      <div className="grid place-items-center p-2">
-        <div className="flex flex-col justify-center gap-2">
-          <h5 className="font-bold uppercase text-green-500">{name}</h5>
-          <img className="rounded-md" src={img} alt={name} />
-          <p className=""> {description} </p>
-          <p>Precio: ${price} </p>
-          <ItemCount stock={stock} onAdd={handleAddToCart} />
-        </div>
-      </div>
+    <main className="w-full grid grid-cols-2 bg-black text-center text-white p-4 rounded-md">
+      <section className="grid place-items-center p-2">
+        <img className="rounded-md" src={img} alt={name} />
+      </section>
+      <section className="flex flex-col justify-center items-center gap-2">
+        <h5 className="text-4xl font-bold mb-4 uppercase text-green-500">
+          {name}
+        </h5>
+        <p className="w-5/6 text-gray-500 text-2xl border-b border-gray-500 pb-6">
+          {description}
+        </p>
+        <p className="text-gray-500 text-2xl font-bold">Precio: ${price} </p>
+        <ItemCount stock={stock} onAdd={handleAddToCart} />
+      </section>
     </main>
   );
 };

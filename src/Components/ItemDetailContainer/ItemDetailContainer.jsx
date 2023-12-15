@@ -22,6 +22,8 @@ export const ItemDetailContainer = () => {
           };
           setItem(product);
           setIsLoading(false);
+        } else {
+          alert("El producto seleccionado no existe");
         }
       })
       .catch((error) => console.log(error));
