@@ -6,6 +6,7 @@ import {
   Navbar,
 } from "./Components";
 import { CartContextProvider } from "./Context/CartContext";
+import { Footer } from "./Components/Footer/Footer";
 
 export const App = () => {
   return (
@@ -20,6 +21,7 @@ export const App = () => {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </CartContextProvider>
+      <Footer />
     </BrowserRouter>
   );
 };

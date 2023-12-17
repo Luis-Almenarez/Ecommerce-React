@@ -8,7 +8,7 @@ export const CartContextProvider = ({ children }) => {
   const [totalQuantityCart, setTotalQuantityCart] = useState(0);
 
   const addItem = (item, quantity) => {
-    const { id, name, price } = item;
+    const { id, img, name, price } = item;
 
     // Busca el índice en el array 'cartItems' del elemento cuyo 'id' coincide con el valor de la variable 'id'
     const index = cartItems.findIndex((element) => element.id === id);
@@ -28,6 +28,7 @@ export const CartContextProvider = ({ children }) => {
       const newItem = {
         id,
         name,
+        img,
         price,
         quantity,
         subTotal: quantity * price,

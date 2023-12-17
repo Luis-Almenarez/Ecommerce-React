@@ -9,13 +9,13 @@ export const ItemDetail = ({ id, name, description, img, price, stock }) => {
     if (count === 0) {
       alert("Debe agregar por lo menos un producto al carrito");
     } else {
-      addItem({ id, name, price }, count);
+      addItem({ id, img, name, price }, count);
       alert("Se han agregado los productos al carrito");
     }
   };
 
   return (
-    <main className="w-full grid grid-cols-2 bg-black text-center text-white p-4 rounded-md">
+    <main className="w-full grid grid-cols-1 md:grid-cols-2 bg-black text-center text-white p-4">
       <section className="grid place-items-center p-2">
         <img className="rounded-md" src={img} alt={name} />
       </section>
