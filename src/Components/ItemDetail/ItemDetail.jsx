@@ -20,13 +20,13 @@ export const ItemDetail = ({ id, name, description, img, price, stock }) => {
         <img className="rounded-md" src={img} alt={name} />
       </section>
       <section className="flex flex-col justify-center items-center gap-2">
-        <h5 className="text-4xl font-bold mb-4 uppercase text-green-500">
-          {name}
-        </h5>
-        <p className="w-5/6 text-gray-500 text-2xl border-b border-gray-500 pb-6">
+        <h5 className="text-3xl font-bold mb-4  text-green-500">{name}</h5>
+        <p className="w-5/6 text-gray-500 text-xl border-b border-gray-500 pb-6">
           {description}
         </p>
-        <p className="text-gray-500 text-2xl font-bold">Precio: ${price} </p>
+        <p className="text-gray-500 text-2xl font-bold">
+          Price: <span className="text-white"> ${price} USD </span>
+        </p>
         <ItemCount stock={stock} onAdd={handleAddToCart} />
       </section>
     </main>

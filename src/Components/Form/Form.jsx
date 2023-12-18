@@ -35,11 +35,9 @@ export const Form = () => {
       setAddress("");
       removeAllItems();
 
-      // Aquí puedes mostrar la alerta con el orderId
       alert(`Order placed successfully! Order ID: ${orderId}`);
     } catch (error) {
       console.error("Error placing order:", error);
-      // Puedes manejar el error aquí, mostrar una alerta, etc.
     } finally {
       setIsSubmitting(false);
     }
