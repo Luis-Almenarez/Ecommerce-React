@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { FirebaseContext } from "../../Context/FirebaseContext";
 import { CartContext } from "../../Context/CartContext";
+import Swal from "sweetalert2";
 
 export const Form = () => {
   const { addOrder, orderId } = useContext(FirebaseContext);
@@ -16,7 +17,11 @@ export const Form = () => {
     e.preventDefault();
 
     if (cartItems.length === 0) {
-      alert("Debes agregar por lo menos un item al carrito");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Your shopping cart is empty, add at least one product.",
+      });
       return;
     }
 
@@ -35,7 +40,11 @@ export const Form = () => {
       setAddress("");
       removeAllItems();
 
-      alert(`Order placed successfully! Order ID: ${orderId}`);
+      Swal.fire({
+        icon: "success",
+        title: "Order placed successfully!",
+        text: `Order number: ${orderId}`,
+      });
     } catch (error) {
       console.error("Error placing order:", error);
     } finally {

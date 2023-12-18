@@ -34,7 +34,6 @@ export const CartContextProvider = ({ children }) => {
         subTotal: quantity * price,
       };
       setCartItems([...cartItems, newItem]);
-      console.log("Se agregó correctamente");
     }
   };
   const removeItem = (id) => {

@@ -1,10 +1,49 @@
 import { Badge } from "@mui/material";
 import { useContext } from "react";
 import { CartContext } from "../../../Context/CartContext";
+import Swal from "sweetalert2";
 
 export const ListProducts = () => {
   const { cartItems, removeItem, removeAllItems, cartTotalPrice } =
     useContext(CartContext);
+
+  const handleCleanCart = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action will remove all products from the cart.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Clean cart",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeAllItems();
+        Swal.fire("Deleted", "All products have been removed.", "success");
+      }
+    });
+  };
+
+  const handleDeleteItem = (itemId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This action will remove the product from the cart.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeItem(itemId);
+        Swal.fire(
+          "Deleted",
+          "The product has been removed from your cart.",
+          "success"
+        );
+      }
+    });
+  };
 
   return (
     <section className="flex flex-col justify-between gap-6 p-10 lg:p-20 rounded-md shadow-md">
@@ -23,7 +62,7 @@ export const ListProducts = () => {
           </p>
           <div>
             <button
-              onClick={() => removeItem(item.id)}
+              onClick={() => handleDeleteItem(item.id)}
               className="font-bold border border-gray-500 text-xs p-2 hover:bg-red-700 hover:border-red-700 transition-all duration-300 rounded-md">
               Delete
             </button>
@@ -35,7 +74,7 @@ export const ListProducts = () => {
       </h3>
 
       <button
-        onClick={() => removeAllItems()}
+        onClick={handleCleanCart}
         className="font-bold border border-gray-500 hover:bg-red-700/50 p-2 rounded-md  w-full transition-all duration-300">
         Clean cart
       </button>

@@ -1,16 +1,27 @@
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { ItemCount } from "../ItemCount/ItemCount";
+import Swal from "sweetalert2";
 
 export const ItemDetail = ({ id, name, description, img, price, stock }) => {
   const { addItem } = useContext(CartContext);
 
   const handleAddToCart = (count) => {
     if (count === 0) {
-      alert("Debe agregar por lo menos un producto al carrito");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "You must add at least one product to the cart.",
+      });
     } else {
       addItem({ id, img, name, price }, count);
-      alert("Se han agregado los productos al carrito");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Correctly added",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
