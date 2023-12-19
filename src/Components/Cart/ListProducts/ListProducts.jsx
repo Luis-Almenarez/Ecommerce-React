@@ -8,39 +8,42 @@ export const ListProducts = () => {
     useContext(CartContext);
 
   const handleCleanCart = () => {
+    let timerInterval;
+
     Swal.fire({
-      title: "Are you sure?",
-      text: "This action will remove all products from the cart.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, Clean cart",
+      title: "Cleaning Cart",
+      html: "Removing all products...",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const timer = Swal.getPopup().querySelector("b");
+        timerInterval = setInterval(() => {
+          timer.textContent = `${Swal.getTimerLeft()}`;
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+        removeAllItems(); // Remove all items after the timer expires
+      },
     }).then((result) => {
-      if (result.isConfirmed) {
-        removeAllItems();
-        Swal.fire("Deleted", "All products have been removed.", "success");
+      if (result.dismiss === Swal.DismissReason.timer) {
+        Swal.fire("Cart Cleaned", "All products have been removed.", "success");
       }
     });
   };
 
   const handleDeleteItem = (itemId) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "This action will remove the product from the cart.",
-      icon: "warning",
+      title: "Confirm Deletion",
+      text: "Do you want to remove this product from the cart?",
+      icon: "info",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
       confirmButtonText: "Yes, delete",
     }).then((result) => {
       if (result.isConfirmed) {
         removeItem(itemId);
-        Swal.fire(
-          "Deleted",
-          "The product has been removed from your cart.",
-          "success"
-        );
+        Swal.fire("Deleted", "Product removed from the cart.", "success");
       }
     });
   };
