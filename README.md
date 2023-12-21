@@ -1,6 +1,6 @@
 # React Ecommerce.
 
-Esta aplicación representa una tienda de tecnología desarrollada utilizando las tecnologías más modernas. Está construida con React para la lógica de la aplicación y Tailwind CSS para los estilos, garantizando una interfaz atractiva y altamente responsive.
+Esta aplicación representa una tienda de ropa desarrollada utilizando las tecnologías más modernas. Está construida con React para la lógica de la aplicación y Tailwind CSS para los estilos, garantizando una interfaz atractiva y altamente responsive.
 
 ## Tecnologías Utilizadass
 
