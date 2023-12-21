@@ -10,17 +10,25 @@ export const Form = () => {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
   const [address, setAddress] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (cartItems.length === 0) {
+    if (email !== confirmEmail) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Your shopping cart is empty, add at least one product.",
+        text: "Email and Confirm Email do not match.",
+      });
+      return;
+    } else if (cartItems.length === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Your shopping cart is empty. Add at least one product.",
       });
       return;
     }
@@ -30,13 +38,14 @@ export const Form = () => {
     try {
       await addOrder(
         cartItems,
-        { name, lastname, email, address },
+        { name, lastname, email, confirmEmail, address },
         cartTotalPrice
       );
 
       setName("");
       setLastname("");
       setEmail("");
+      setConfirmEmail("");
       setAddress("");
       removeAllItems();
 
@@ -108,6 +117,24 @@ export const Form = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="Your email"
+            className="border-2 border-solid border-black focus:border-green-500 focus:outline-none bg-gray-500/30 mt-1 p-2 w-full transition-all duration-300 rounded-md"
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="confirmEmail"
+            className="text-sm font-medium text-gray-600">
+            Confirm Email
+          </label>
+          <input
+            type="email"
+            id="confirmEmail"
+            name="confirmEmail"
+            value={confirmEmail}
+            onChange={(e) => setConfirmEmail(e.target.value)}
+            required
+            placeholder="Confirm your email"
             className="border-2 border-solid border-black focus:border-green-500 focus:outline-none bg-gray-500/30 mt-1 p-2 w-full transition-all duration-300 rounded-md"
           />
         </div>
